@@ -29,7 +29,14 @@ class Home extends Component {
 
 
     componentDidMount() {
-        // this.renderList() ;
+        getAllUrl().then((res)=>{
+            this.setState({urlListData: res.data.urls})
+        })
+    }
+    componentDidUpdate(){
+        getAllUrl().then((res)=>{
+            this.setState({urlListData: res.data.urls})
+        })
     }
 
     handleUserInput(e) {
@@ -37,11 +44,6 @@ class Home extends Component {
         const value = e.target.value;
         this.setState({ [name]: value });
     }
-
-    renderList() {
-
-        return (<DataList />)
-    };
 
     handleSubmit() {
         this.setState({ clickSubmit: true, showApiError: false });
@@ -52,15 +54,12 @@ class Home extends Component {
             };
             createShortUrl(reqObj)
                 .then(json => {
-                    setTimeout(() => {
-                        this.setState({
-                            showLoading: false,
-                            showShortenUrl: true,
-                            shortenUrl: json.data.shortId,
-                            refreshTable: true
-                        });
-                        this.renderList()
-                    }, 0);
+                    this.setState({
+                        showLoading: false,
+                        showShortenUrl: true,
+                        shortenUrl: json.data.shortId,
+                        refreshTable: true
+                    });
                 })
                 .catch(error => {
                     this.setState({
@@ -165,7 +164,7 @@ class Home extends Component {
                                               .This will change based on domain name]
 
                                                     <br></br>
-                                        {this.renderList()}
+                                        <DataList data={this.state.urlListData} />
                                     </div>
 
                                 </div>

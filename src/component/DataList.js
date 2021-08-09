@@ -10,11 +10,9 @@ import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css
 
 
 // function DataList() 
-const DataList = (props) => 
-
+const DataList = ({data}) => 
 
 {
-    const [urlList, setUrlList] = useState([]);
 
     const columns = [
         
@@ -48,15 +46,9 @@ onSizePerPageChange: function (page, sizePerPage){
 }
   });
 
-    useEffect(() => {
-        getAllUrl()
-            .then(response => {setUrlList(response.data.urls)
-            })
-            .catch(error => console.log(error));
-    }, [])
-    return <div>
-<BootstrapTable keyField='id' columns={columns} data={urlList} pagination={pagination} filter={filterFactory()} />
-    </div>
+    return (<div>
+            <BootstrapTable keyField='id' columns={columns} data={data} pagination={pagination} filter={filterFactory()} />
+        </div>)
 }
 
 export default DataList
