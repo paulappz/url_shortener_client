@@ -18,7 +18,7 @@ class Home extends Component {
             showLoading: false,
             showListLoading: false,
             urlListData: [],
-            refreshTable:true,
+            refreshTable: true,
             exUrl:
                 "https://www.linkedin.com/company/indicina-africa/?originalSubdomain=ng",
             exShortUrl: constants.baseUrl
@@ -38,6 +38,10 @@ class Home extends Component {
         this.setState({ [name]: value });
     }
 
+    renderList() {
+
+        return (<DataList />)
+    };
 
     handleSubmit() {
         this.setState({ clickSubmit: true, showApiError: false });
@@ -55,6 +59,7 @@ class Home extends Component {
                             shortenUrl: json.data.shortId,
                             refreshTable: true
                         });
+                        this.renderList()
                     }, 0);
                 })
                 .catch(error => {
@@ -157,16 +162,10 @@ class Home extends Component {
                                         <a target="_blank" href={this.state.exShortUrl}>
                                             {this.state.exShortUrl}
                                         </a>{" "}
-              .This will change based on domain name]
+                                              .This will change based on domain name]
 
-                                            {this.state.refreshTable && (
-
-                                            <DataList/>
-
-                                        )}
-
-
-
+                                                    <br></br>
+                                        {this.renderList()}
                                     </div>
 
                                 </div>

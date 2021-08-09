@@ -20,7 +20,7 @@ const DataList = (props) =>
         
         { dataField: 'url', text: 'Original Url', filter: textFilter({
             placeholder: 'Search for urls',  // custom the input placeholder
-            style: { backgroundColor: 'gray' }, // your custom inline styles on input
+            style: { backgroundColor: '#fff' }, // your custom inline styles on input
             delay: 1000, // how long will trigger filtering after user typing, default is 500 ms
           })},
         { dataField:  'shortId' , text: 'Short code'}

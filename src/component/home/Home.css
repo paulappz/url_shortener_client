@@ -13,7 +13,7 @@
   .btn-shorten {
     color: #ffffff;
     background-color: #0b3e56;
-    border: none;
+    border: 50%;
   }
   
   .btn-shorten:hover,
@@ -22,7 +22,7 @@
   .btn-shorten.active {
     color: #ffffff;
     background-color: #4f4d7d;
-    border: none;
+    border: 50%;
   }
   
   .site-wrapper {
@@ -82,15 +82,6 @@
     }
   }
   
-  /* .landing {
-    margin-top: 20px;
-  } */
-  /* .submit-btn {
-    width: 100%;
-  } */
-  /* .shorten-title {
-    margin-top: 20px;
-  } */
   .formError {
     color: red;
   }
