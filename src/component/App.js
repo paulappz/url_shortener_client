@@ -13,12 +13,11 @@ class App extends Component {
           <div>
            
             <Switch>
-             
+              <Route path="/" component={Home} />
             </Switch>
           </div>
           
         </BrowserRouter>
-         {/* <DataList /> */}
         <Footer />
       </div>
     );
