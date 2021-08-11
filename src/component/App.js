@@ -4,19 +4,19 @@ import Footer from "./footer/Footer";
 import Home from "./home/Home";
 import "./App.css";
 class App extends Component {
-  componentDidMount() {}
+  componentDidMount() { }
 
   render() {
     return (
       <div className="container">
         <BrowserRouter>
           <div>
-           
+
             <Switch>
               <Route path="/" component={Home} />
             </Switch>
           </div>
-          
+
         </BrowserRouter>
         <Footer />
       </div>

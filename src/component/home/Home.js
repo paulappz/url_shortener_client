@@ -29,13 +29,13 @@ class Home extends Component {
 
 
     componentDidMount() {
-        getAllUrl().then((res)=>{
-            this.setState({urlListData: res.data.urls})
+        getAllUrl().then((res) => {
+            this.setState({ urlListData: res.data.urls })
         })
     }
-    componentDidUpdate(){
-        getAllUrl().then((res)=>{
-            this.setState({urlListData: res.data.urls})
+    componentDidUpdate() {
+        getAllUrl().then((res) => {
+            this.setState({ urlListData: res.data.urls })
         })
     }
 
@@ -105,7 +105,7 @@ class Home extends Component {
                     <div className="site-wrapper-inner">
                         <div className="main-container">
                             <div className="inner cover"></div>
-                            <span class="glyphicon glyphicon-link"></span>
+                            <span className="glyphicon glyphicon-link"></span>
                             <h1>URL Shortener</h1>
                             <h4>http://www.pauloluyege.com</h4>
 
@@ -118,7 +118,7 @@ class Home extends Component {
                                     </div>
                                     <div>
                                         Ex:{" "}
-                                        <a target="_blank" href={this.state.exUrl}>
+                                        <a target="_blank" rel="noreferrer" href={this.state.exUrl}>
                                             {this.state.exUrl}
                                         </a>
                                     </div>
@@ -151,14 +151,14 @@ class Home extends Component {
                                     {this.state.showShortenUrl && (
                                         <div className="shorten-title">
                                             Shortened Url is  {` `}
-                                            <a target="_blank" href={this.state.baseUrl + '/' + this.state.shortenUrl}>
+                                            <a target="_blank"  rel="noreferrer" href={this.state.baseUrl + '/' + this.state.shortenUrl}>
                                                 {this.state.exShortUrl + '/' + this.state.shortenUrl}
                                             </a>
                                         </div>
                                     )}
                                     <div className="shorten-imp">
                                         [* Here base url has the default value{" "}
-                                        <a target="_blank" href={this.state.exShortUrl}>
+                                        <a target="_blank" rel="noreferrer" href={this.state.exShortUrl}>
                                             {this.state.exShortUrl}
                                         </a>{" "}
                                               .This will change based on domain name]
