@@ -39,7 +39,7 @@ const DataList = ({ data }) => {
         }
     });
 
-    return (<div>
+    return (<div  className='list'>
         <BootstrapTable keyField='id' columns={columns} data={data} pagination={pagination} filter={filterFactory()} />
     </div>)
 }

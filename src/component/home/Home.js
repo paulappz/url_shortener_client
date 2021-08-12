@@ -18,7 +18,6 @@ class Home extends Component {
             showLoading: false,
             showListLoading: false,
             urlListData: [],
-            refreshTable: true,
             exUrl:
                 "https://www.linkedin.com/company/indicina-africa/?originalSubdomain=ng",
             exShortUrl: constants.baseUrl
@@ -30,12 +29,14 @@ class Home extends Component {
 
     componentDidMount() {
         getAllUrl().then((res) => {
-            this.setState({ urlListData: res.data.urls })
+            this.setState({ urlListData: res.data.urls,
+                showListLoading: true })
         })
     }
     componentDidUpdate() {
         getAllUrl().then((res) => {
-            this.setState({ urlListData: res.data.urls })
+            this.setState({ urlListData: res.data.urls,
+                showListLoading: true })
         })
     }
 
@@ -57,8 +58,7 @@ class Home extends Component {
                     this.setState({
                         showLoading: false,
                         showShortenUrl: true,
-                        shortenUrl: json.data.shortId,
-                        refreshTable: true
+                        shortenUrl: json.data.shortId
                     });
                 })
                 .catch(error => {
@@ -111,7 +111,6 @@ class Home extends Component {
 
                             <div className="row">
 
-
                                 <div className="col-lg-12">
                                     <div>
                                         <h5> Original Url</h5>
@@ -163,8 +162,11 @@ class Home extends Component {
                                         </a>{" "}
                                               .This will change based on domain name]
 
-                                                    <br></br>
-                                        <DataList data={this.state.urlListData} />
+                                                    
+                                                {this.state.showListLoading && (
+                                                    <DataList  data={this.state.urlListData} />
+                                                )}
+                                    
                                     </div>
 
                                 </div>
