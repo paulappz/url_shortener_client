@@ -10,6 +10,7 @@ import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css
 const DataList = ({ data }) => {
 
     const columns = [
+        { dataField: 'id', text: 'No.' },
 
         {
             dataField: 'url', text: 'Original Url', filter: textFilter({

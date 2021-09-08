@@ -29,15 +29,24 @@ class Home extends Component {
 
     componentDidMount() {
         getAllUrl().then((res) => {
-            this.setState({ urlListData: res.data.urls,
-                showListLoading: true })
+            const list = res.data.urls.map((item, id) => ({ id, ...item }))
+            this.setState({
+                urlListData: list,
+                showListLoading: true
+            })
         })
     }
-    componentDidUpdate() {
-        getAllUrl().then((res) => {
-            this.setState({ urlListData: res.data.urls,
-                showListLoading: true })
-        })
+    componentDidUpdate(prevProps, nextProps) {
+        if (prevProps !== this.props) {
+            getAllUrl().then((res) => {
+                const list = res.data.urls.map((item, id) => ({ id, ...item }))
+                this.setState({
+                    urlListData: nextProps.list,
+                    showListLoading: true
+                })
+            })
+
+        }
     }
 
     handleUserInput(e) {
@@ -122,7 +131,7 @@ class Home extends Component {
                                         </a>
                                     </div>
 
-                                    <input id="url-field" class="form-control"
+                                    <input id="url-field" className="form-control"
                                         type="text"
                                         name="originalUrl"
                                         field="originalUrl"
@@ -140,7 +149,7 @@ class Home extends Component {
 
                                 <div className="col-lg-12">
 
-                                    <span class="input-group-btn">
+                                    <span className="input-group-btn">
                                         {this.renderButton()}
                                     </span>
 
@@ -150,7 +159,7 @@ class Home extends Component {
                                     {this.state.showShortenUrl && (
                                         <div className="shorten-title">
                                             Shortened Url is  {` `}
-                                            <a target="_blank"  rel="noreferrer" href={this.state.baseUrl + '/' + this.state.shortenUrl}>
+                                            <a target="_blank" rel="noreferrer" href={this.state.baseUrl + '/' + this.state.shortenUrl}>
                                                 {this.state.exShortUrl + '/' + this.state.shortenUrl}
                                             </a>
                                         </div>
@@ -162,11 +171,11 @@ class Home extends Component {
                                         </a>{" "}
                                               .This will change based on domain name]
 
-                                                    
+
                                                 {this.state.showListLoading && (
-                                                    <DataList  data={this.state.urlListData} />
-                                                )}
-                                    
+                                            <DataList data={this.state.urlListData} />
+                                        )}
+
                                     </div>
 
                                 </div>
